@@ -2,7 +2,6 @@ from django.db import models
 
 class Place(models.Model):
     title = models.CharField(max_length=200)
-    #imgs = models.Imagefield()
     description_short = models.TextField(verbose_name="Короткое описание")
     description_long = models.TextField(verbose_name="Полное описание",
                                         blank=True, null=True)
@@ -13,3 +12,10 @@ class Place(models.Model):
     
     def __str__(self):
         return self.title
+
+class PlaceImage(models.Model):
+    place = models.ForeignKey(Place, related_name='place_images', on_delete=models.CASCADE)
+    image = models.ImageField(blank=True, null=True)
+
+    def __str__(self):
+        return f'{self.id} {self.place.title}'
