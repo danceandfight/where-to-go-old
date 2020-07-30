@@ -15,13 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from where_to_go.views import show_index_page, show_place_page
+from where_to_go import views
 
 from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', show_index_page),
-    path('places/<int:id>/', show_place_page),
+    path('', views.show_main_page, name='show_main_page'),
+    path('places/<int:id>/', views.show_place_page, name='show_place_page'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
