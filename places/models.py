@@ -18,5 +18,9 @@ class PlaceImage(models.Model):
     image = models.ImageField(blank=True, null=True)
     number = models.PositiveIntegerField(blank=True, null=True)
 
+    
+    class Meta(object):
+        ordering = ['number']
+
     def __str__(self):
         return f'{self.number} {self.place.title}'
