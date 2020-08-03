@@ -3,7 +3,9 @@ from django.utils.html import format_html
 from .models import Place, PlaceImage
 from adminsortable2.admin import SortableInlineAdminMixin
 
-class PlaceImageInline(admin.TabularInline):
+import traceback
+
+class PlaceImageInline(SortableInlineAdminMixin, admin.TabularInline):
     model = PlaceImage
     readonly_fields = ['image_preview']
 
@@ -19,8 +21,11 @@ class PlaceImageInline(admin.TabularInline):
 
 @admin.register(Place)
 class PlaceAdmin(admin.ModelAdmin):
-    inlines = [
-        PlaceImageInline,
-    ]
+    try:
+        inlines = [
+            PlaceImageInline,
+        ]
+    except Exception:
+        print(traceback.format_exc())
 
 admin.site.register(PlaceImage)
