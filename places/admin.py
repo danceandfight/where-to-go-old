@@ -17,7 +17,7 @@ class PlaceImageInline(SortableInlineAdminMixin, admin.TabularInline):
             )
     )
 
-    fields = ('image', 'place', 'image_preview', 'number')
+    fields = ('image', 'image_preview')
 
 @admin.register(Place)
 class PlaceAdmin(admin.ModelAdmin):

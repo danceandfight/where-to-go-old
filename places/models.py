@@ -16,7 +16,7 @@ class Place(models.Model):
 class PlaceImage(models.Model):
     place = models.ForeignKey(Place, related_name='place_images', on_delete=models.CASCADE)
     image = models.ImageField(blank=True, null=True)
-    number = models.PositiveIntegerField(blank=True, null=True)
+    number = models.PositiveIntegerField(default=0, blank=True, null=True)
 
     
     class Meta(object):
