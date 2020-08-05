@@ -15,9 +15,9 @@ class Place(models.Model):
         return self.title
 
 class PlaceImage(models.Model):
-    place = models.ForeignKey(Place, related_name='place_images', on_delete=models.CASCADE)
-    image = models.ImageField(blank=True, null=True)
-    number = models.PositiveIntegerField(default=0, blank=True, null=True)
+    place = models.ForeignKey(Place, verbose_name='Место', related_name='place_images', on_delete=models.CASCADE)
+    image = models.ImageField(verbose_name='Фотография', blank=True, null=True)
+    number = models.PositiveIntegerField(verbose_name='Номер', default=0, blank=True, null=True)
     
     
     class Meta(object):
