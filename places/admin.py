@@ -28,4 +28,6 @@ class PlaceAdmin(admin.ModelAdmin):
     except Exception:
         print(traceback.format_exc())
 
+    search_fields = ['title']
+
 admin.site.register(PlaceImage)
