@@ -37,7 +37,7 @@ class Command(BaseCommand):
             response.raise_for_status()
             img_name = url.split('/')[-1]
             #BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-            BASE_DIR = os.getcwd()
+            BASE_DIR = os.getcwd().split('/')[-1]
             img_with_path = os.path.join(BASE_DIR, 'media', 'media', img_name)
             placeimage, create = PlaceImage.objects.get_or_create(place=place, number=number)
             img_byte = BytesIO(response.content)
